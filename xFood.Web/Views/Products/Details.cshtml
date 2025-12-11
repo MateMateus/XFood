@@ -1,0 +1,48 @@
+﻿@model xFood.Application.DTOs.ProductDto
+@{
+    ViewData["Title"] = "Detalhes do Produto";
+    var role = Context.Session.GetString("UserRole");
+    bool isAdmin = string.Equals(role, "Admin", StringComparison.OrdinalIgnoreCase);
+    bool isManager = string.Equals(role, "Manager", StringComparison.OrdinalIgnoreCase);
+}
+<h2>Detalhes do Produto</h2>
+
+<div class="row g-4 mt-2">
+    <div class="col-md-4">
+        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+        {
+            <img src="@Model.ImageUrl" alt="@Model.Name" class="img-fluid rounded border" />
+        }
+        else
+        {
+            <div class="bg-light border rounded text-center p-5 text-muted">
+                <small>sem imagem</small>
+            </div>
+        }
+    </div>
+    <div class="col-md-8">
+        <dl class="row">
+            <dt class="col-sm-3">Nome</dt>
+            <dd class="col-sm-9">@Model.Name</dd>
+            <dt class="col-sm-3">Categoria</dt>
+            <dd class="col-sm-9">@Model.CategoryName ?? "(sem categoria)"</dd>
+            <dt class="col-sm-3">Preço</dt>
+            <dd class="col-sm-9">@Model.Price.ToString("c")</dd>
+            <dt class="col-sm-3">Estoque</dt>
+            <dd class="col-sm-9">@Model.Stock</dd>
+            <dt class="col-sm-3">Descrição</dt>
+            <dd class="col-sm-9">@Model.Description ?? "(sem descrição)"</dd>
+        </dl>
+        <div class="mt-3 d-flex gap-2">
+
+            @if (isAdmin || isManager)
+            {
+                <a class="btn btn-warning" href="@Url.Action("Edit", new { id = Model.Id })">Editar</a>
+
+            }
+
+            <a class="btn btn-secondary" href="@Url.Action("Index", "Home")">Voltar</a>
+
+        </div>
+    </div>
+</div>

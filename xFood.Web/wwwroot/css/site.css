@@ -1,0 +1,197 @@
+/* ===== Tema (dark/light) via [data-theme] ===== */
+:root {
+    --thumb-size: 180px;
+    /* Light */
+    --bg-light: #ffffff;
+    --bg2-light: #f6f7f9;
+    --text-light: #1d212a;
+    --muted-light: #6c757d;
+    --link-light: #0d6efd;
+    --link-hover-light: #0a58ca;
+    /* Dark */
+    --bg-dark: #0b0c0f;
+    --bg2-dark: #11131a;
+    --text-dark: #e8e9ef;
+    --muted-dark: #a9adba;
+    --link-dark: #8ab4ff;
+    --link-hover-dark: #c3d6ff;
+}
+
+[data-theme="light"] {
+    --bg: var(--bg-light);
+    --bg2: var(--bg2-light);
+    --text: var(--text-light);
+    --muted: var(--muted-light);
+    --link: var(--link-light);
+    --link-hover: var(--link-hover-light);
+}
+
+[data-theme="dark"] {
+    --bg: var(--bg-dark);
+    --bg2: var(--bg2-dark);
+    --text: var(--text-dark);
+    --muted: var(--muted-dark);
+    --link: var(--link-dark);
+    --link-hover: var(--link-hover-dark);
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+}
+
+
+@media (min-width: 992px) {
+    body {
+        padding-top: 150px;
+    }
+}
+
+a {
+    color: var(--link);
+}
+
+    a:hover {
+        color: var(--link-hover);
+    }
+
+/* Navbar & cards respeitando o tema */
+.navbar {
+    background: var(--bg2) !important;
+}
+
+    .navbar .nav-link, .navbar .navbar-brand {
+        color: var(--text) !important;
+    }
+
+        .navbar .nav-link:hover, .navbar .navbar-brand:hover {
+            color: #fff !important;
+        }
+
+.card, .cat-card, .prod-card {
+    background: var(--bg2);
+    color: var(--text);
+}
+
+    .text-muted, .card .text-muted {
+        color: var(--muted) !important;
+    }
+
+/* HERO */
+.hero {
+    background: linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.08)), var(--bg2);
+    padding: 1rem;
+}
+
+/* ===== Categorias (mini-cards) ===== */
+.cat-card {
+    cursor: pointer;
+    transition: transform .15s ease;
+    background: var(--bg-2);
+}
+
+    .cat-card:hover {
+        transform: translateY(-2px);
+    }
+
+    .cat-card .card-body {
+        padding: .8rem .9rem;
+    }
+
+    .cat-card.active {
+        outline: 2px solid rgba(255,255,255,.3);
+    }
+
+/* ===== Produtos (cards) ===== */
+.prod-card {
+    background: var(--bg-2);
+}
+
+    .prod-card .thumb {
+        width: 100%;
+        height: var(--thumb-size);
+        object-fit: cover;
+        border-radius: .5rem;
+        background: #1a1a1a;
+    }
+
+    .prod-card .price {
+        font-weight: 700;
+    }
+
+/* navbar/links em light */
+[data-theme="light"] .navbar {
+    background: #0d6efd !important;
+}
+
+/* ===== CRUD em Dark Mode (tabela, paginação, formulários) ===== */
+[data-theme="dark"] .table {
+    /* vars do Bootstrap 5.3 para tabelas */
+    --bs-table-color: var(--text);
+    --bs-table-bg: var(--bg2);
+    --bs-table-border-color: #2a2d36;
+    --bs-table-striped-bg: color-mix(in srgb, var(--bg2) 86%, #000 14%);
+    --bs-table-striped-color: var(--text);
+    --bs-table-hover-bg: color-mix(in srgb, var(--bg2) 80%, #000 20%);
+    --bs-table-hover-color: var(--text);
+    color: var(--bs-table-color);
+    background-color: var(--bs-table-bg);
+    border-color: var(--bs-table-border-color);
+}
+
+    [data-theme="dark"] .table thead th {
+        background-color: color-mix(in srgb, var(--bg2) 85%, #000 15%);
+        color: var(--text);
+        border-color: #2a2d36;
+    }
+
+    [data-theme="dark"] .table td,
+    [data-theme="dark"] .table th {
+        border-color: #2a2d36;
+    }
+
+/* Paginação do CRUD */
+[data-theme="dark"] .pagination .page-link {
+    background-color: var(--bg2);
+    color: var(--text);
+    border-color: #2a2d36;
+}
+
+[data-theme="dark"] .pagination .page-item.active .page-link {
+    background-color: #0d6efd;
+    color: #fff;
+    border-color: #0d6efd;
+}
+
+[data-theme="dark"] .pagination .page-item.disabled .page-link {
+    color: #8a8f9b;
+}
+
+/* Inputs/Selects nos formulários do CRUD (opcional, ajuda no contraste) */
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-select,
+[data-theme="dark"] .form-control:focus,
+[data-theme="dark"] .form-select:focus {
+    background-color: var(--bg2);
+    color: var(--text);
+    border-color: #2a2d36;
+}
+
+    [data-theme="dark"] .form-control::placeholder {
+        color: #9aa0ae;
+    }
+
+/* Dropdowns (ex.: menu do usuário) */
+[data-theme="dark"] .dropdown-menu {
+    background-color: var(--bg2);
+    color: var(--text);
+    border-color: #2a2d36;
+}
+
+[data-theme="dark"] .dropdown-item {
+    color: var(--text);
+}
+
+    [data-theme="dark"] .dropdown-item:hover {
+        background: color-mix(in srgb, var(--bg2) 75%, #000 25%);
+    }

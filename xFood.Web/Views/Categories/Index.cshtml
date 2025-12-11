@@ -1,0 +1,43 @@
+﻿@model IEnumerable<xFood.Application.DTOs.CategoryDto>
+@{
+    ViewData["Title"] = "Categorias";
+}
+<h2 class="mb-3">Categorias</h2>
+
+@if (TempData["Error"] is string err)
+{
+    <div class="alert alert-danger">@err</div>
+}
+@if (TempData["Success"] is string ok)
+{
+    <div class="alert alert-success">@ok</div>
+}
+
+<a class="btn btn-primary mb-3" href="@Url.Action("Create")">Nova Categoria</a>
+<table class="table table-striped">
+    <thead>
+
+        <tr>
+         <th>Nome</th>
+        <th>Descrição</th>
+        <th style="width:160px">Opções</th>
+    </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.Name</td>
+                <td>@c.Description</td>
+                <td class="text-end">
+                    <a class="btn btn-sm btn-warning" href="@Url.Action("Edit", new { id = c.Id })">Editar</a>
+                    <a class="btn btn-sm btn-danger" href="@Url.Action("Delete", new { id = c.Id })"
+                       onclick="return confirm('Excluir esta categoria?');">Excluir</a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+

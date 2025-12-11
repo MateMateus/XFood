@@ -1,0 +1,92 @@
+﻿@model IEnumerable<xFood.Application.DTOs.UserDto>
+@{
+    ViewData["Title"] = "Usuários";
+    var role = Context.Session.GetString("UserRole");
+    bool isAdmin = string.Equals(role, "Admin", StringComparison.OrdinalIgnoreCase);
+    bool isManager = string.Equals(role, "Manager", StringComparison.OrdinalIgnoreCase);
+    var status = ((string)ViewBag.Status ?? "active").ToLower();
+}
+
+<h2 class="mb-3">Usuários</h2>
+
+<div class="mb-3 d-flex gap-2">
+    <a class="btn btn-primary" href="@Url.Action("Create")">Novo Usuário</a>
+    <a class="btn btn-secondary" href="/#restrict">Voltar</a>
+
+
+    <div class="ms-auto d-flex gap-1">
+        <a class="btn btn-sm @(status=="active"?"btn-success":"btn-outline-secondary")"
+           href="@Url.Action("Index", new { status = "active" })">Ativos</a>
+        <a class="btn btn-sm @(status=="inactive"?"btn-warning":"btn-outline-secondary")"
+           href="@Url.Action("Index", new { status = "inactive" })">Inativos</a>
+        <a class="btn btn-sm @(status=="all"?"btn-info":"btn-outline-secondary")"
+           href="@Url.Action("Index", new { status = "all" })">Todos</a>
+    </div>
+</div>
+
+<table class="table table-hover align-middle">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Tipo</th>
+            <th>Nascimento</th>
+            <th>Ativo</th>
+            <th style="width:250px" class="end-0">Opções</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var u in Model)
+        {
+            <tr>
+                <td>@u.Name</td>
+                <td>@u.Email</td>
+                <td>@(u.TypeUserDescription ?? "-")</td>
+                <td>@u.DateBirth.ToString("dd/MM/yyyy")</td>
+                <td>
+                    @if (u.Active)
+                    {
+                        <span class="badge bg-success">Ativo</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-secondary">Inativo</span>
+                    }
+                </td>
+                <td class="text-end">
+                    <a class="btn btn-sm btn-outline-info" href="@Url.Action("Details", new { id = u.Id })">Detalhes</a>
+                    @if (isAdmin || isManager)
+                    {
+                        <a class="btn btn-sm btn-outline-warning" href="@Url.Action("Edit", new { id = u.Id })">Editar</a>
+                    }
+                    @if (isAdmin)
+                    {
+                        @if (u.Active)
+                        {
+                            <form asp-action="SoftDelete" method="post" class="d-inline">
+                                <input type="hidden" name="id" value="@u.Id" />
+                                <input type="hidden" name="returnStatus" value="@status" />
+                                <button class="btn btn-sm btn-outline-danger"
+                                        onclick="return confirm('Desativar este usuário?');">
+                                    Desativar
+                                </button>
+                            </form>
+                        }
+                        else
+                        {
+                            <form asp-action="Restore" method="post" class="d-inline">
+                                <input type="hidden" name="id" value="@u.Id" />
+                                <input type="hidden" name="returnStatus" value="@status" />
+                                <button class="btn btn-sm btn-outline-success"
+                                        onclick="return confirm('Reativar este usuário?');">
+                                    Reativar
+                                </button>
+                            </form>
+                        }
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,58 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\mbrag\\Downloads\\xFood\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4C94D6CF-4DCB-4CF4-8D00-931C5D4C1A5E}|xFood.infrastructure\\xFood.Infrastructure.csproj|c:\\users\\mbrag\\downloads\\xfood\\xfood.infrastructure\\repositories\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C94D6CF-4DCB-4CF4-8D00-931C5D4C1A5E}|xFood.infrastructure\\xFood.Infrastructure.csproj|solutionrelative:xfood.infrastructure\\repositories\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A8BE6AE2-C169-4265-9D0A-6DCC33FA7A6A}|xFood.web\\xFood.Web.csproj|c:\\users\\mbrag\\downloads\\xfood\\xfood.web\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A8BE6AE2-C169-4265-9D0A-6DCC33FA7A6A}|xFood.web\\xFood.Web.csproj|solutionrelative:xfood.web\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 225,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CategoryRepository.cs",
+              "DocumentMoniker": "C:\\Users\\mbrag\\Downloads\\xFood\\xFood.Infrastructure\\Repositories\\CategoryRepository.cs",
+              "RelativeDocumentMoniker": "xFood.Infrastructure\\Repositories\\CategoryRepository.cs",
+              "ToolTip": "C:\\Users\\mbrag\\Downloads\\xFood\\xFood.Infrastructure\\Repositories\\CategoryRepository.cs",
+              "RelativeToolTip": "xFood.Infrastructure\\Repositories\\CategoryRepository.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-14T11:48:29.331Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\mbrag\\Downloads\\xFood\\xFood.Web\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "xFood.Web\\Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Users\\mbrag\\Downloads\\xFood\\xFood.Web\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "xFood.Web\\Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-14T11:45:45.115Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

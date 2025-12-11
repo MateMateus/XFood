@@ -1,0 +1,55 @@
+﻿@model xFood.Application.DTOs.UserCreateUpdateDto
+@{
+    ViewData["Title"] = "Editar Usuário";
+    var types = (SelectList)ViewBag.TypeUsers;
+}
+<h2>Editar Usuário</h2>
+
+<form asp-action="Edit" asp-route-id="@ViewBag.UserId" method="post">
+    <input type="hidden" name="id" value="@ViewBag.UserId" />
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="row g-3 mt-2">
+        <div class="col-md-6">
+            <label class="form-label">Nome</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">E-mail</label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Senha</label>
+            <input asp-for="Password" class="form-control" />
+            <small class="text-muted">Use "(manter)" para não alterar.</small>
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Nascimento</label>
+            <input asp-for="DateBirth" type="date" class="form-control" />
+            <span asp-validation-for="DateBirth" class="text-danger"></span>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Tipo</label>
+            <select asp-for="TypeUserId" asp-items="types" class="form-select"></select>
+            <span asp-validation-for="TypeUserId" class="text-danger"></span>
+        </div>
+        <div class="col-md-4">
+            <div class="form-check mt-4">
+                <input asp-for="Active" class="form-check-input" />
+                <label class="form-check-label" asp-for="Active">Ativo</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-3 d-flex gap-2">
+        <button class="btn btn-primary">Salvar</button>
+        <a class="btn btn-secondary" href="@Url.Action("Index")">Cancelar</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

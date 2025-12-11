@@ -1,0 +1,59 @@
+﻿@model xFood.Application.DTOs.ProductCreateUpdateDto
+@{
+    ViewData["Title"] = "Novo Produto";
+    var categories = (SelectList)ViewBag.Categories;
+    var role = Context.Session.GetString("UserRole");
+    bool isAdmin = string.Equals(role, "Admin", StringComparison.OrdinalIgnoreCase);
+    bool isManager = string.Equals(role, "Manager", StringComparison.OrdinalIgnoreCase);
+}
+<h2>Novo Produto</h2>
+<form method="post" class="mt-3" enctype="multipart/form-data">
+
+
+    <div asp-validation-summary="All" class="text-danger"></div>  <!-- ✅ summary -->
+
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label class="form-label">Nome</label>
+            <input asp-for="Name" class="form-control" />
+            <span class="text-danger" asp-validation-for="Name"></span>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Categoria</label>
+            <select asp-for="CategoryId" asp-items="categories" class="form-select"></select>
+            <span class="text-danger" asp-validation-for="CategoryId"></span>
+        </div>
+        <div class="col-md-4">
+            <label asp-for="Price" class="form-label"></label>
+            <input asp-for="Price" class="form-control" type="text" inputmode="decimal" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-4">
+            <label class="form-label">Estoque</label>
+            <input asp-for="Stock" class="form-control" />
+            <span class="text-danger" asp-validation-for="Stock"></span>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Imagem</label>
+            <input type="file" name="imageFile" class="form-control" accept="image/*" />
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <img src="@Model.ImageUrl" class="img-thumbnail mt-2" style="max-height:120px" />
+            }
+        </div>
+
+        <div class="col-12">
+            <label class="form-label">Descrição</label>
+            <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+        </div>
+    </div>
+    <div class="mt-3">
+        <button class="btn btn-primary">Salvar</button>
+        <a class="btn btn-secondary" href="@Url.Action("Index")">Cancelar</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />  <!-- ✅ scripts -->
+}

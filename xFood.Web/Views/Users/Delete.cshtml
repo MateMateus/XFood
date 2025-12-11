@@ -1,0 +1,21 @@
+﻿@model xFood.Application.DTOs.UserDto
+@{
+    ViewData["Title"] = "Excluir Usuário";
+}
+<h2>Excluir Usuário</h2>
+<p class="text-muted">Tem certeza que deseja excluir este usuário?</p>
+
+<dl class="row mt-3">
+    <dt class="col-sm-3">Nome</dt>
+    <dd class="col-sm-9">@Model.Name</dd>
+    <dt class="col-sm-3">E-mail</dt>
+    <dd class="col-sm-9">@Model.Email</dd>
+    <dt class="col-sm-3">Tipo</dt>
+    <dd class="col-sm-9">@Model.TypeUserDescription</dd>
+</dl>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <button class="btn btn-danger">Excluir</button>
+    <a class="btn btn-secondary" href="@Url.Action("Index")">Cancelar</a>
+</form>

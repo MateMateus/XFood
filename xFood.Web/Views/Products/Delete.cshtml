@@ -1,0 +1,32 @@
+﻿@model xFood.Application.DTOs.ProductDto
+@{
+    ViewData["Title"] = "Excluir Produto";
+    var role = Context.Session.GetString("UserRole");
+    bool isAdmin = string.Equals(role, "Admin", StringComparison.OrdinalIgnoreCase);
+    bool isManager = string.Equals(role, "Manager", StringComparison.OrdinalIgnoreCase);
+}
+<h2>Excluir Produto</h2>
+
+<div class="alert alert-warning">
+    Tem certeza que deseja excluir <strong>@Model.Name</strong>?
+</div>
+
+@if (!string.IsNullOrEmpty(Model.ImageUrl))
+{
+    <img src="@Model.ImageUrl" class="img-thumbnail mb-3" style="max-height:200px" />
+}
+
+<dl class="row">
+    <dt class="col-sm-2">Categoria</dt>
+    <dd class="col-sm-10">@Model.CategoryName</dd>
+    <dt class="col-sm-2">Preço</dt>
+    <dd class="col-sm-10">@Model.Price.ToString("c")</dd>
+    <dt class="col-sm-2">Estoque</dt>
+    <dd class="col-sm-10">@Model.Stock</dd>
+</dl>
+
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+    <button class="btn btn-danger">Confirmar Exclusão</button>
+    <a class="btn btn-secondary" href="@Url.Action("Index")">Cancelar</a>
+</form>

@@ -1,0 +1,9 @@
+C:\Users\mbrag\Downloads\xFood\xFood.web\wwwroot\lib\bootstrap\dist\css\bootstrap.css
+C:\Users\mbrag\Downloads\xFood\xFood.web\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map
+C:\Users\mbrag\Downloads\xFood\xFood.web\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map
+C:\Users\mbrag\Downloads\xFood\xFood.web\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map
+C:\Users\mbrag\Downloads\xFood\xFood.web\wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
+C:\Users\mbrag\Downloads\xFood\xFood.web\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css
+C:\Users\mbrag\Downloads\xFood\xFood.web\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css
+C:\Users\mbrag\Downloads\xFood\xFood.web\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
+C:\Users\mbrag\Downloads\xFood\xFood.web\wwwroot\uploads\f47f849d-5121-48e9-bca3-09f3b5d28b72.png

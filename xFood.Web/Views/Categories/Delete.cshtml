@@ -1,0 +1,37 @@
+﻿@model xFood.Application.DTOs.CategoryDto
+@{
+    ViewData["Title"] = "Excluir Categoria";
+    // Mostre um aviso se tiver produtos(vindo do ViewBag.HasProducts):
+    bool hasProducts = ViewBag.HasProducts is bool b && b;
+}
+
+<h2>Excluir Categoria</h2>
+
+@if (hasProducts)
+{
+    <div class="alert alert-danger">
+        Esta categoria possui produtos vinculados. Você <strong>não pode</strong> excluí-la.
+    </div>
+}
+else
+{
+    <div class="alert alert-warning">
+        Tem certeza que deseja excluir <strong>@Model.Name</strong>?
+    </div>
+}
+
+<dl class="row mt-3">
+    <dt class="col-sm-2">Nome</dt>
+    <dd class="col-sm-10">@Model.Name</dd>
+
+    <dt class="col-sm-2">Descrição</dt>
+    <dd class="col-sm-10">@Model.Description</dd>
+</dl>
+
+<form method="post" action="@Url.Action("Delete", new { id = Model.Id })">
+    <input type="hidden" asp-for="Id" />
+    <button class="btn btn-danger">Confirmar Exclusão</button>
+    <a class="btn btn-secondary" href="@Url.Action("Index")">Cancelar</a>
+</form>
+
+
